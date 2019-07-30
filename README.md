@@ -1,11 +1,11 @@
-# postcss-pxtorem [![NPM version](https://badge.fury.io/js/postcss-pxtorem.svg)](http://badge.fury.io/js/postcss-pxtorem)
+# postcss-pxtorem-include [![NPM version](https://badge.fury.io/js/postcss-pxtorem.svg)](http://badge.fury.io/js/postcss-pxtorem)
 
 A plugin for [PostCSS](https://github.com/ai/postcss) that generates rem units from pixel units.
 
 ## Install
 
 ```shell
-$ npm install postcss-pxtorem --save-dev
+$ npm install postcss-pxtorem-include --save-dev
 ```
 
 ## Usage
@@ -61,6 +61,7 @@ Type: `Object | Null`
 Default:
 ```js
 {
+    include: 'src/pages/*',
     rootValue: 16,
     unitPrecision: 5,
     propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
@@ -70,7 +71,7 @@ Default:
     minPixelValue: 0
 }
 ```
-
+- `include` (String) The regular path string for px2rem convert.
 - `rootValue` (Number) The root element font size.
 - `unitPrecision` (Number) The decimal numbers to allow the REM units to grow to.
 - `propList` (Array) The properties that can change from px to rem.

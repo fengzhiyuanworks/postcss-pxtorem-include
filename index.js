@@ -24,8 +24,7 @@ var legacyOptions = {
     'propWhiteList': 'propList'
 };
 
-module.exports = postcss.plugin('postcss-pxtorem', function (options) {
-
+module.exports = postcss.plugin('postcss-pxtorem-include', function (options) {
     convertLegacyOptions(options);
 
     var opts = objectAssign({}, defaults, options);
@@ -33,7 +32,11 @@ module.exports = postcss.plugin('postcss-pxtorem', function (options) {
 
     var satisfyPropList = createPropListMatcher(opts.propList);
 
-    return function (css) {
+    return function (css, result) {
+        if (options.include && css.source.input.file.match(options.include) === null) {
+          result.root = css;
+          return
+        }
 
         css.walkDecls(function (decl, i) {
             // This should be the fastest test and will remove most declarations

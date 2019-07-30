@@ -1,14 +1,14 @@
 {
-  "name": "postcss-pxtorem",
+  "name": "postcss-pxtorem-include",
   "description": "A CSS post-processor that converts px to rem.",
-  "version": "4.0.1",
-  "author": "cuth",
+  "version": "0.0.1",
+  "author": "cuth, lzlhero",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:cuth/postcss-pxtorem.git"
+    "url": "git@github.com:lzlhero/postcss-pxtorem-include.git"
   },
-  "bugs": "https://github.com/cuth/postcss-pxtorem/issues",
+  "bugs": "https://github.com/lzlhero/postcss-pxtorem-include/issues",
   "main": "index.js",
   "scripts": {
     "test": "jasmine-node spec"
