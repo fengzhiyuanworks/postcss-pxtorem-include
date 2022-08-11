@@ -61,7 +61,8 @@ Type: `Object | Null`
 Default:
 ```js
 {
-    include: 'src/pages/*',
+    include: 'src/pages/*', // or ['src/pages/*']
+    exclude: 'src/pages/home/*', // or ['src/pages/home/*']
     rootValue: 16,
     unitPrecision: 5,
     propList: ['font', 'font-size', 'line-height', 'letter-spacing'],
@@ -71,7 +72,8 @@ Default:
     minPixelValue: 0
 }
 ```
-- `include` (String) The regular path string for px2rem convert.
+- `include` (String or Array) The regular path string for px2rem convert.
+- `exclude` (String or Array) The regular path string for px2rem ignored convert.
 - `rootValue` (Number) The root element font size.
 - `unitPrecision` (Number) The decimal numbers to allow the REM units to grow to.
 - `propList` (Array) The properties that can change from px to rem.
