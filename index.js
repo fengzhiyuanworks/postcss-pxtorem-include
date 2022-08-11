@@ -33,9 +33,28 @@ module.exports = postcss.plugin('postcss-pxtorem-include', function (options) {
     var satisfyPropList = createPropListMatcher(opts.propList);
 
     return function (css, result) {
-        if (options.include && css.source.input.file.match(options.include) === null) {
+        // if (options.include && css.source.input.file.match(options.include) === null) {
+        //   result.root = css;
+        //   return
+        // }
+
+        // 优化 include 部分代码
+        var isMatch = false
+        if(options.include){
+          var includeList = Array.isArray(options.include) ? options.include : [options.include]
+          isMatch = includeList.some(include => css.source.input.file.match(include) !== null)
+        }
+        // 增加对 exclude 的支持
+        if(options.exclude){
+          var excludeList = Array.isArray(options.exclude) ? options.exclude : [options.exclude]
+          const inExcludeList = excludeList.some(exclude => css.source.input.file.match(exclude) !== null)
+          if(inExcludeList) isMatch = false
+        }
+        if (!isMatch) {
           result.root = css;
           return
+        }else{
+          // console.log('mathc success :>> ', css.source.input.file);
         }
 
         css.walkDecls(function (decl, i) {
